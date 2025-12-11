@@ -1,9 +1,10 @@
 <template>
-  <div class="login-page container-fluid">
-    <div class="row login-content">
-      <div class="col-lg-6 col-md-12 left-side">
-        <div class="wrapper">
+  <div class="container-fluid login-page">
+    <div class="row">
+      <div class="main-info col-lg-6 col-md-12">
+        <div class="main-text">
           <h3>Welcome Back 👋</h3>
+
           <p class="subtitle">
             Today is a new day. It's your day. You shape it. <br />
             Sign in to start managing your projects.
@@ -20,7 +21,9 @@
               required
             />
 
-            <p class="forget-password">Forget Password?</p>
+            <router-link class="text-deco" :to="{ name: 'forgetpassword' }">
+              <p class="forget-password">Forget Password?</p>
+            </router-link>
 
             <button type="submit" class="btn signin">Sign in</button>
 
@@ -31,7 +34,6 @@
             </div>
 
             <button class="google-btn">Sign in with Google</button>
-
             <button class="facebook-btn">Sign in with Facebook</button>
 
             <p class="account">
@@ -39,11 +41,9 @@
               <span class="signup">Sign up</span>
             </p>
           </form>
-
-         
         </div>
-       
-        
+
+        <p class="footer text-center">© 2025 ALL RIGHT RESERVED</p>
       </div>
 
       <div class="col-lg-6 col-md-12 image-side">
@@ -52,6 +52,7 @@
     </div>
   </div>
 </template>
+
 <style scoped lang="scss">
 * {
   margin: 0;
@@ -59,27 +60,25 @@
   box-sizing: border-box;
 }
 
+.text-deco {
+  text-decoration: none;
+}
+
 .login-page {
   background: #ffffff;
   width: 100%;
-}
-
-.login-content {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
   padding: 2.5rem;
 }
 
-.left-side {
+.main-info {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.wrapper {
+.main-text {
   width: 75%;
-  margin: auto;
+  margin: 3rem auto;
 }
 
 h3 {
@@ -109,7 +108,6 @@ input {
   border: 1px solid #e5e7eb;
   background: #f3f4f6;
   font-size: 14px;
-  border: none;
   outline: none;
 
   &::placeholder {
@@ -117,7 +115,6 @@ input {
   }
 
   &:focus {
-    border: none;
     outline: 1px solid #0a2540;
   }
 }
@@ -136,7 +133,7 @@ input {
   padding: 12px;
   margin-top: 1.4rem;
   background: #0a2540;
-  color: white;
+  color: #fff;
   border-radius: 0.5rem;
   font-weight: 600;
 }
@@ -158,7 +155,7 @@ input {
     color: #6b7280;
     padding: 4px 10px;
     border-radius: 30px;
-    background: #ffffff;
+    background: #fff;
     font-weight: 600;
   }
 }
@@ -173,11 +170,9 @@ input {
   font-weight: 600;
   margin-bottom: 0.8rem;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   gap: 12px;
-
-  
 }
 
 .account {
@@ -193,7 +188,11 @@ input {
   }
 }
 
-
+.footer {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 13px;
+}
 
 .image-side {
   display: flex;
@@ -203,94 +202,78 @@ input {
 
 .side-image {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   object-fit: cover;
   border-radius: 1rem;
 }
 
-
-
 @media (max-width: 992px) {
-  .login-content {
-    flex-direction: column-reverse;
+  .login-page {
     padding: 1.2rem;
   }
 
+  .row {
+    flex-direction: column-reverse;
+  }
+
+  .main-text {
+    width: 100%;
+    margin-top: 1rem;
+  }
+
   .footer {
-    margin-top: 2.5rem;
+    margin-top: 2rem;
     position: static;
   }
 
   h3 {
-    margin-top: 1.2rem;
-    font-size: 2rem;
+    font-size: 26px;
+    margin-top: 1rem;
   }
 
   .subtitle {
-    font-size: 1.5rem;
-  }
-
-  label {
-    font-size: 1.4rem;
-  }
-
-  input {
-    font-size: 1rem;
-  }
-
-  .forget-password {
-    font-size: 1.1rem;
-  }
-
-  .signin {
-    font-size: 1.2rem;
+    font-size: 15px;
   }
 
   .side-image {
     height: 45vh;
     border-radius: 0.8rem;
   }
-
-  .wrapper {
-    width: 100%;
-  }
-
-  
 }
 
 @media (max-width: 600px) {
-  .side-image {
-    height: 35vh;
-  }
-
   h3 {
-    margin-top: 1.2rem;
-    font-size: 1.2rem;
+    font-size: 22px;
   }
 
   .subtitle {
-    font-size: 0.75rem;
+    font-size: 12px;
   }
 
   label,
-  input {
-    font-size: 1rem;
-  }
-
-  .forget-password {
-    font-size: 0.75rem;
-  }
-
   input,
   .signin,
   .google-btn,
   .facebook-btn {
+    font-size: 13px;
     padding: 10px;
-    font-size: 0.75rem;
+  }
+
+  .forget-password {
+    font-size: 11px;
   }
 
   .divider span {
     font-size: 11px;
-  }  
+  }
+
+  .side-image {
+    height: 35vh;
+  }
+
+  .footer {
+    margin-top: 3rem;
+    font-size: 12px;
+  }
 }
 </style>
