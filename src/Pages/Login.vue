@@ -4,48 +4,48 @@
       <div class="main-info col-lg-6 col-md-12">
         <div class="main-text">
           <h3>Welcome Back 👋</h3>
-
           <p class="subtitle">
             Today is a new day. It's your day. You shape it. <br />
             Sign in to start managing your projects.
           </p>
-
           <form>
             <label>Email</label>
             <input type="email" placeholder="Example@gmail.com" required />
-
             <label>Password</label>
             <input
               type="password"
               placeholder="At least 8 characters"
               required
             />
-
             <router-link class="text-deco" :to="{ name: 'forgetpassword' }">
               <p class="forget-password">Forget Password?</p>
             </router-link>
-
-            <button type="submit" class="btn signin">Sign in</button>
-
+            <button type="submit" class="btn signin">{{ text }} in</button>
             <div class="divider">
               <div class="line"></div>
               <span>Or</span>
               <div class="line"></div>
             </div>
-
-            <button class="google-btn">Sign in with Google</button>
-            <button class="facebook-btn">Sign in with Facebook</button>
-
+            <button class="google-btn">
+              <FontAwesomeIcon
+                :icon="['fab', 'google']"
+                style="color: #ea2a50"
+              />
+               {{ text }} in with Google
+            </button>
+            <button class="facebook-btn">
+              <FontAwesomeIcon :icon="['fab', 'facebook']" 
+              style="color:blue"/>
+               {{ text }} in with Facebook
+            </button>
             <p class="account">
               Don’t have an account?
-              <span class="signup">Sign up</span>
+              <span class="signup">{{ text }} up</span>
             </p>
           </form>
         </div>
-
         <p class="footer text-center">© 2025 ALL RIGHT RESERVED</p>
       </div>
-
       <div class="col-lg-6 col-md-12 image-side">
         <img src="/flower 3.jpg" alt="Flower" class="side-image" />
       </div>
@@ -277,3 +277,14 @@ input {
   }
 }
 </style>
+
+<script  >
+  export default{
+    data(){
+      return{
+        text: 'Sign'
+      }
+    }
+  }
+
+</script>
